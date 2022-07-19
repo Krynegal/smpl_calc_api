@@ -1,8 +1,11 @@
 package types
 
-type Operands struct {
-	Num1    float64 `json:"num1"`
-	NumSys1 int     `json:"numSys1"`
-	Num2    float64 `json:"num2"`
-	NumSys2 int     `json:"numSys2"`
+type Operand struct {
+	Value string `json:"value"`
+	Base  int    `json:"base"`
+}
+
+type Data struct {
+	Operands [2]Operand
+	ToBase   int `json:"toBase"`
 }

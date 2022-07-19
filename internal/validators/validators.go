@@ -1,31 +1,29 @@
 package validators
 
 import (
+	"encoding/json"
 	"errors"
+	"github.com/Krynegal/smpl_calc_api.git/internal/types"
+	"io/ioutil"
+	"log"
 	"net/http"
-	"strconv"
 )
 
 var (
-	ParameterMissed = errors.New("parameter has been missed")
+	//ParameterMissed = errors.New("parameter has been missed")
+	//ConvertError1   = errors.New("fail convert first operand")
+	//ConvertError2   = errors.New("fail convert first operand")
+	UnmarshallError = errors.New("fail unmarshall request body")
 )
 
-func validateParameters(o string) (float64, error) {
-	operand, err := strconv.ParseFloat(o, 64)
-	if err != nil {
-		return 0, err
+func GetData(r *http.Request) (types.Data, error) {
+	reqBody, err := ioutil.ReadAll(r.Body)
+	log.Printf("request body: %v", string(reqBody))
+	data := types.Data{}
+	if err = json.Unmarshal(reqBody, &data); err != nil {
+		return data, UnmarshallError
 	}
-	return operand, nil
+	return data, nil
 }
 
-func ParseParameters(r *http.Request) (float64, float64, error) {
-	a, errA := validateParameters(r.URL.Query().Get("a"))
-	if errA != nil {
-		return 0, 0, ParameterMissed
-	}
-	b, errB := validateParameters(r.URL.Query().Get("b"))
-	if errB != nil {
-		return 0, 0, ParameterMissed
-	}
-	return a, b, nil
-}
+// нужна проверка на то, что строка с операндом не пустая и не является строкой
