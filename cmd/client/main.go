@@ -3,7 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/Krynegal/smpl_calc_api.git/internal/types"
+	"github.com/Krynegal/smpl_calc_api.git"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -11,19 +11,16 @@ import (
 
 func main() {
 	client := http.DefaultClient
-	operands := [2]types.Operand{
-		{
+	body := smpl_calc_api.Data{
+		Operand1: smpl_calc_api.Operand{
 			Value: "35",
 			Base:  10,
 		},
-		{
-			Value: "0",
+		Operand2: smpl_calc_api.Operand{
+			Value: "3",
 			Base:  10,
 		},
-	}
-	body := types.Data{
-		Operands: operands,
-		ToBase:   10,
+		ToBase: 10,
 	}
 	r, err := json.Marshal(body)
 	if err != nil {
@@ -32,7 +29,7 @@ func main() {
 	log.Println(string(r))
 	reqBody := bytes.NewBuffer(r)
 	log.Println(reqBody)
-	req, err := http.NewRequest(http.MethodPost, "http://localhost:8080/api/div", reqBody)
+	req, err := http.NewRequest(http.MethodPost, "http://localhost:8080/api/add", reqBody)
 	if err != nil {
 		panic("bad request")
 	}
