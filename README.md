@@ -1,8 +1,20 @@
-Simple api calculator
+## Simple Calculator API
 
-You can run server using scripts/rundev.sh
+This calculator API supports simple math (addition, subtraction, division and multiplication) for numbers expressed in any numeral system
 
-Request example for endpoint /api/add: 
+### How to run server
+___
+In order to run server
+```
+cd scripts && ./rundev.sh
+```
+
+also you can set your own configs in **scripts/env.sh** 
+
+### Work example
+___
+
+Request example: 
 ```json
 {
     "operand1": {
@@ -17,7 +29,7 @@ Request example for endpoint /api/add:
 }
 ```
 
-Response example:
+Response example for endpoint /api/add:
 ```json
 {
     "success": true,
