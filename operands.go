@@ -4,7 +4,7 @@ import "errors"
 
 type Operand struct {
 	Value string `json:"value"`
-	Base  int    `json:"base"`
+	Base  int    `json:"base" example:"10"`
 }
 
 type Data struct {

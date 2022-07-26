@@ -1,11 +1,11 @@
 package handlers
 
-type response struct {
-	Success bool
-	Value   int64
+type Response struct {
+	Success bool  `json:"success"`
+	Result  int64 `json:"result"`
 }
 
-type errResponse struct {
-	Success bool
-	Error   string
+type ErrorResponse struct {
+	Success bool   `json:"success" example:"false"`
+	Error   string `json:"error"`
 }

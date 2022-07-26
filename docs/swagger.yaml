@@ -1,0 +1,140 @@
+basePath: /
+definitions:
+  handlers.ErrorResponse:
+    properties:
+      error:
+        type: string
+      success:
+        example: false
+        type: boolean
+    type: object
+  handlers.Response:
+    properties:
+      result:
+        type: integer
+      success:
+        type: boolean
+    type: object
+  smpl_calc_api.Data:
+    properties:
+      operand1:
+        $ref: '#/definitions/smpl_calc_api.Operand'
+      operand2:
+        $ref: '#/definitions/smpl_calc_api.Operand'
+      toBase:
+        type: integer
+    type: object
+  smpl_calc_api.Operand:
+    properties:
+      base:
+        example: 10
+        type: integer
+      value:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Description
+  license:
+    name: Apache 2.0
+  title: Simple Calculator API
+  version: "1.0"
+paths:
+  /api/add:
+    post:
+      consumes:
+      - application/json
+      description: return sum of two numbers
+      parameters:
+      - description: comment
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/smpl_calc_api.Data'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+      summary: addition
+  /api/div:
+    post:
+      consumes:
+      - application/json
+      description: return division of two numbers
+      parameters:
+      - description: comment
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/smpl_calc_api.Data'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+      summary: division
+  /api/mul:
+    post:
+      consumes:
+      - application/json
+      description: return multiplication of two numbers
+      parameters:
+      - description: comment
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/smpl_calc_api.Data'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+      summary: multiplication
+  /api/sub:
+    post:
+      consumes:
+      - application/json
+      description: return subtraction of two numbers
+      parameters:
+      - description: comment
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/smpl_calc_api.Data'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+      summary: subtraction
+swagger: "2.0"

@@ -21,6 +21,6 @@ Response example:
 ```json
 {
     "success": true,
-    "value": 38
+    "result": 38
 }
 ```
