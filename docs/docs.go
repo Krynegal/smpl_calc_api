@@ -185,7 +185,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "result": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "success": {
                     "type": "boolean"

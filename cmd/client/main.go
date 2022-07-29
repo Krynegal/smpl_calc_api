@@ -13,12 +13,12 @@ func main() {
 	client := http.DefaultClient
 	body := smpl_calc_api.Data{
 		Operand1: smpl_calc_api.Operand{
-			Value: "35",
-			Base:  10,
+			Value: "FF",
+			Base:  16,
 		},
 		Operand2: smpl_calc_api.Operand{
-			Value: "3",
-			Base:  10,
+			Value: "FF",
+			Base:  1,
 		},
 		ToBase: 10,
 	}

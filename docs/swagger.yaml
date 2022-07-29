@@ -11,7 +11,7 @@ definitions:
   handlers.Response:
     properties:
       result:
-        type: integer
+        type: string
       success:
         type: boolean
     type: object

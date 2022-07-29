@@ -1,8 +1,8 @@
 package handlers
 
 type Response struct {
-	Success bool  `json:"success"`
-	Result  int64 `json:"result"`
+	Success bool   `json:"success"`
+	Result  string `json:"result"`
 }
 
 type ErrorResponse struct {

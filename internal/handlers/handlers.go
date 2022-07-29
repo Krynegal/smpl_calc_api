@@ -46,6 +46,10 @@ func GetOperands(data smpl_calc_api.Data) (int64, int64, error) {
 	return op1, op2, nil
 }
 
+func toBase(res int64, data smpl_calc_api.Data) string {
+	return strconv.FormatInt(res, data.ToBase)
+}
+
 // @Summary addition
 // @Accept json
 // @Description return sum of two numbers
@@ -77,7 +81,7 @@ func (h *Handler) HandlerAdd(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	resResponse := Response{Success: true, Result: sum}
+	resResponse := Response{Success: true, Result: toBase(sum, data)}
 	json.NewEncoder(w).Encode(&resResponse)
 }
 
@@ -112,7 +116,7 @@ func (h *Handler) HandlerSub(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	resResponse := Response{Success: true, Result: sub}
+	resResponse := Response{Success: true, Result: toBase(sub, data)}
 	json.NewEncoder(w).Encode(&resResponse)
 }
 
@@ -147,7 +151,7 @@ func (h *Handler) HandlerMul(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	resResponse := Response{Success: true, Result: mul}
+	resResponse := Response{Success: true, Result: toBase(mul, data)}
 	json.NewEncoder(w).Encode(&resResponse)
 }
 
@@ -188,6 +192,6 @@ func (h *Handler) HandlerDiv(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	resResponse := Response{Success: true, Result: div}
+	resResponse := Response{Success: true, Result: toBase(div, data)}
 	json.NewEncoder(w).Encode(&resResponse)
 }
