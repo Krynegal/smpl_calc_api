@@ -16,6 +16,13 @@ cd scripts && ./rundev.sh
 
 also you can set your own configs in **scripts/env.sh** 
 
+### Available endpoints
+
+- /api/add - addition
+- /api/sub - subtraction
+- /api/div - division
+- /api/mul - multiplication
+
 ### Request format
 
 ```
@@ -53,7 +60,7 @@ Request example:
 }
 ```
 
-Response example for endpoint /api/add:
+Response example for endpoint /api/mul:
 ```json
 {
     "success": true,
